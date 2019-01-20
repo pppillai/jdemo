@@ -1,0 +1,12 @@
+- ManualTesting.docx 
+	- post call to gateway api which returns the hardcoded encoded string.
+	- post call to service api which returns the post body.
+- Projects
+	- demo-master : copy of the original gateway application.
+	- demoSimple : service to which gateway application routes requests.
+	- test_demo : testng/java project
+		- Test gateway with hardcoded value.
+		- Test gateway with post body.
+		- Test gateway with hardcoded value and decode response and check.
+		- Test gateway with hardcoded value and decode response and check.
+		- Test service with post data.

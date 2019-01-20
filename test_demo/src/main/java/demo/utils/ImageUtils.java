@@ -6,11 +6,30 @@ import org.apache.log4j.Logger;
 
 import java.util.Map;
 
+
+/*
+ *
+ * Utility Class
+ * Use this class inside test
+ * Use DemoClientWrapper object to make http calls.
+ *
+ * */
+
+
 public class ImageUtils {
 
     private static Logger log = Logger.getLogger(ImageUtils.class);
 
-    public static String getDecodedImage(String service, String image){
+
+    /*
+    *
+    * @param service url of service
+    * @param image data
+    *
+    * Return decoded image data
+    *
+    * */
+    public static String getDecodedImage(String service, String image) {
 
         int responseCode = 0;
         String finalImage = null;
@@ -23,7 +42,7 @@ public class ImageUtils {
 
         if (respMap == null) {
             return "";
-        }else{
+        } else {
 
             for (Map.Entry<Integer, String> me : respMap.entrySet()) {
                 responseCode = me.getKey().intValue();
@@ -33,7 +52,7 @@ public class ImageUtils {
 
         if (responseCode == 200) {
             return decodeString(finalImage.substring("\"image\":\"".length() + 1));
-        }else{
+        } else {
             log.error("Did not get HTTP OK status.");
         }
 
@@ -41,7 +60,15 @@ public class ImageUtils {
         return finalImage;
     }
 
-    public static String getEncodedImage(String service, String image){
+    /*
+     *
+     * @param service url of service
+     * @param image data
+     *
+     * Return encoded image data
+     *
+     * */
+    public static String getEncodedImage(String service, String image) {
         int responseCode = 0;
         String finalImage = null;
 
@@ -53,7 +80,7 @@ public class ImageUtils {
 
         if (respMap == null) {
             return "";
-        }else{
+        } else {
 
             for (Map.Entry<Integer, String> me : respMap.entrySet()) {
                 responseCode = me.getKey().intValue();
@@ -63,7 +90,7 @@ public class ImageUtils {
 
         if (responseCode == 200) {
             return finalImage;
-        }else{
+        } else {
             log.error("Did not get HTTP OK status.");
         }
 
@@ -71,19 +98,36 @@ public class ImageUtils {
         return finalImage;
     }
 
-    public static String encodeString(String str){
+    /*
+     *
+     * @param str string to encode Base64
+     *
+     * Return after removing html escaping chars
+     * */
+    public static String encodeString(String str) {
         return removeHtmlEscapingFromString(new String(Base64.encodeBase64(str.getBytes())));
     }
 
-    public static String decodeString(String str){
+    /*
+    * @param str string to decode Base64
+    *
+    * Return decoded string
+    *
+    * */
+    public static String decodeString(String str) {
         return new String(Base64.decodeBase64(str.getBytes()));
     }
 
-    public static String removeHtmlEscapingFromString(String str){
-        while(true){
-            if (str.endsWith("=")){
-                str = str.substring(0, str.length()-1);
-            }else{
+    /*
+    * @param str string to remove html escaping chars.
+    *
+    * Return str
+    * */
+    public static String removeHtmlEscapingFromString(String str) {
+        while (true) {
+            if (str.endsWith("=")) {
+                str = str.substring(0, str.length() - 1);
+            } else {
                 return str;
             }
         }

@@ -11,16 +11,16 @@ import java.util.Map;
 public class TestDemoEncodeImage {
 
     private static Logger log = Logger.getLogger(TestDemoEncodeImage.class);
-//    public static String image = "test";
-//    public static String hardCodePrefilter = "1234";
+    public static String testimage = "test";
+    public static String testhardCodePrefilter = "1234";
     public static String service = Site.encodedImagePath;
 
 
     @DataProvider(name="images")
     public Object[][] images(){
         return new Object[][]{
-                {"test", "This test will fail as service returns a hardcoded value"},
-                {"1234", "This test will pass as we are matching with hardcoded return value"}
+                {testimage, "This test will fail as service returns a hardcoded value"},
+                {testhardCodePrefilter, "This test will pass as we are matching with hardcoded return value"}
         };
     }
 

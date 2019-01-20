@@ -7,14 +7,17 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import java.nio.charset.Charset;
 
 
 @RestController
 @SpringBootApplication
 public class DemoSimpleApplication {
+
+    /*
+    * Return bytes received from request as String
+    *
+    * */
 
     @RequestMapping(value = "/api/image", method = RequestMethod.POST)
     public String imageApi(@RequestBody byte[] bytes) {

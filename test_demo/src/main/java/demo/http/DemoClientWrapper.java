@@ -12,6 +12,14 @@ import java.net.URL;
 import java.util.HashMap;
 import java.util.Map;
 
+/*
+ *
+ * Actual http worker class.
+ * use this object for http calls.
+ *
+ *
+ * */
+
 public class DemoClientWrapper {
 
     final static Logger log = Logger.getLogger(DemoClientWrapper.class);
@@ -28,11 +36,26 @@ public class DemoClientWrapper {
         this.baseUrl = baseUrl;
     }
 
+    /*
+     * @param image String data
+     *
+     * Returns ResponseCode as integer and ResponseBody as String.
+     *
+     * this method is mapped exactly as required by service.
+     * */
     public Map<Integer, String> encodeImage(String image) {
         String postJsonData = "{\"image\":\"" + image + "\"}";
         return postRequest(postJsonData);
     }
 
+
+    /*
+     *
+     * @param data String data.
+     *
+     * Returns ResponseCode as integer and ResponseBody as String.
+     *
+     * */
     public Map<Integer, String> postRequest(String data) {
         Map<Integer, String> response = new HashMap();
         String encodedImage;

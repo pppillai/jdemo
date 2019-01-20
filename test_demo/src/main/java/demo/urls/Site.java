@@ -1,5 +1,12 @@
 package demo.urls;
 
+
+/*
+* Class to store service urls.
+*
+* */
+
+
 public class Site {
 
     public static final String baseUrl = "http://localhost:8083";
